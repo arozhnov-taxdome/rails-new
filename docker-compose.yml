@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+
+  web:
+    build: .
+    volumes:
+      - .:/app:cached
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_PASS: 1234
+      DATABASE_USER: test
+      DATABASE_NAME: test
+      DATABASE_HOST: postgres
+
+
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: test
+      POSTGRES_DB: test
+
